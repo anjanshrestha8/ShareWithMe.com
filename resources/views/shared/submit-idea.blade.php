@@ -5,6 +5,9 @@
         <div class="mb-3">
             <textarea class="form-control" id="idea" rows="3" name="idea"></textarea>
         </div>
+        @error('idea')
+            <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
+        @enderror
         <div class="">
             <button class="btn btn-outline-success"> Share </button>
         </div>

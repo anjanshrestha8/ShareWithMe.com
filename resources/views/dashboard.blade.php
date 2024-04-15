@@ -38,10 +38,11 @@
             </div>
         </div>
         <div class="col-6">
-
-            @include('shared.submit-idea')
+            @include('shared.success-message')
+            @include('shared.submit-idea') {{-- Ideas share Form  --}}
             <hr>
             @foreach ($ideas as $idea)
+                . {{-- Data retrive garxa data base bata   --}}
                 <div class="mt-3">
                     @include('shared.idea-card')
                 </div>
