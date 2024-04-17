@@ -9,6 +9,9 @@
                         </a></h5>
                 </div>
             </div>
+            <div>
+                <button class=" btn btn-danger btn-sm"> X </button>
+            </div>
         </div>
     </div>
     <div class="card-body">
