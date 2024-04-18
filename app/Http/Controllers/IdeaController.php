@@ -10,7 +10,7 @@ class IdeaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'idea'=>'required|min:5|max:250'
+            'idea' => 'required|min:5|max:250'
         ]);
 
         $idea = new Idea();
@@ -18,5 +18,12 @@ class IdeaController extends Controller
         $idea->save();
 
         return redirect()->route("dashboard")->with("success", "Idea was created successfully!!");
+    }
+
+    public function destroy($id)
+    {
+        Idea::where("id", $id)->firstOrFail()->delete();
+
+        return redirect()->route("dashboard")->with("success", "Idea was deleted successfully!!");
     }
 }
