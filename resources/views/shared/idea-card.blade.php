@@ -13,15 +13,34 @@
                 <form method="post" action={{ route('idea.destroy', $idea->id) }}>
                     @csrf()
                     @method('delete')
-                    <button class=" btn btn-danger btn-sm"> X </button>
+                    <a href="{{ route('idea.edit', $idea->id) }}" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a href="{{ route('idea.show', $idea->id) }}" class="btn btn-outline-success btn-sm">View</a>
+                    <button class=" btn btn-outline-danger btn-sm"> x</button>
                 </form>
             </div>
         </div>
     </div>
     <div class="card-body">
-        <p class="fs-6 fw-light text-muted">
-            {{ $idea->content }}
-        </p>
+
+        @if ($editing ?? false)
+            <form action={{ route('idea.update', $idea->id) }} method="POST">
+                @csrf
+                @method('put')
+                <div class="mb-3">
+                    <textarea class="form-control" id="content" rows="3" name="idea">{{ $idea->content }}</textarea>
+                </div>
+                @error('content')
+                    <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
+                @enderror
+                <div class="">
+                    <button class="btn btn-outline-success btn-sm"> Update </button>
+                </div>
+            </form>
+        @else
+            <p class="fs-6 fw-light text-muted">
+                {{ $idea->content }}
+            </p>
+        @endif
         <div class="d-flex justify-content-between">
             <div>
                 <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
