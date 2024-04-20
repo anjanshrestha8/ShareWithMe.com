@@ -15,7 +15,7 @@
                     @method('delete')
                     <a href="{{ route('idea.edit', $idea->id) }}" class="btn btn-outline-info btn-sm">Edit</a>
                     <a href="{{ route('idea.show', $idea->id) }}" class="btn btn-outline-success btn-sm">View</a>
-                    <button class=" btn btn-outline-danger btn-sm"> x</button>
+                    <button class=" btn btn-outline-danger btn-sm"> x </button>
                 </form>
             </div>
         </div>
@@ -27,13 +27,13 @@
                 @csrf
                 @method('put')
                 <div class="mb-3">
-                    <textarea class="form-control" id="content" rows="3" name="idea">{{ $idea->content }}</textarea>
+                    <textarea class="form-control" id="content" rows="3" name="content">{{ $idea->content }}</textarea>
                 </div>
                 @error('content')
                     <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
                 @enderror
                 <div class="">
-                    <button class="btn btn-outline-success btn-sm"> Update </button>
+                    <button class="btn btn-outline-success btn-sm" type="submit"> Update </button>
                 </div>
             </form>
         @else

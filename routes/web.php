@@ -7,12 +7,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
 // to create
 Route::post('/idea', [IdeaController::class, 'store'])->name('idea.create');
+
 // to delete
 Route::delete('idea/{id}', [IdeaController::class, 'destroy'])->name('idea.destroy');
+
 // single data show garxa
 Route::get('/idea/{id}', [IdeaController::class, 'show'])->name('idea.show');
+
 // edit garna ko lage form lauxa
 Route::get('/idea/{id}/edit', [IdeaController::class, 'edit'])->name('idea.edit');
 

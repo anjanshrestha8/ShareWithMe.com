@@ -31,7 +31,7 @@ class IdeaController extends Controller
     public function show(Idea $id)
     {
         return view('idea.show', [
-            'idea' => $id 
+            'idea' => $id
         ]);
     }
 
@@ -44,15 +44,18 @@ class IdeaController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
+
         $request->validate([
             'content' => 'required|min:5|max:250'
         ]);
 
-        $idea = new Idea;
-        $idea->content = $request->get('content');
+        $idea = Idea::find($id);
+        $idea->content = $request->content;
+        $idea->update();
 
-        return redirect()->route('idea.show')->with('success', "Idea was updated successfully!!!!!");
+
+        return redirect()->route('idea.show', $idea->id)->with('success', "Idea was updated successfully!!!!!");
     }
 }
