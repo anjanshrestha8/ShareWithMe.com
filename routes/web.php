@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +18,17 @@ Route::delete('idea/{id}', [IdeaController::class, 'destroy'])->name('idea.destr
 // single data show garxa
 Route::get('/idea/{id}', [IdeaController::class, 'show'])->name('idea.show');
 
-// edit garna ko lage form lauxa 
+// edit garna ko lage form lauxa
 Route::get('/idea/{id}/edit', [IdeaController::class, 'edit'])->name('idea.edit');
 
 Route::put('/idea/{id}', [IdeaController::class, 'update'])->name('idea.update');
+
+
+
+
+// Comment section work
+
+Route::post('/idea/{id}/comments', [CommentController::class, 'store'])->name('idea.comments.store');
 
 
 
