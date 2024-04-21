@@ -30,6 +30,7 @@ class IdeaController extends Controller
 
     public function show(Idea $id)
     {
+
         return view('idea.show', [
             'idea' => $id
         ]);

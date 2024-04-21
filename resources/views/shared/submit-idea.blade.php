@@ -9,7 +9,7 @@
             <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
         @enderror
         <div class="">
-            <button class="btn btn-outline-success"> Share </button>
+            <button class="btn btn-success"> Share </button>
         </div>
     </form>
 </div>
