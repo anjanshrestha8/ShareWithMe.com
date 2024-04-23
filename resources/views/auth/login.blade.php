@@ -28,7 +28,7 @@
                     <input type="submit" name="submit" class="btn btn-success btn-md" value="Submit">
                 </div>
                 <div class="text-right mt-2">
-                    <a href="/register" class="text-body"><button class="btn btn-primary center">Register</button></a>
+                    <a href="/register" class="text-body">Register Here</a>
                 </div>
             </form>
         </div>

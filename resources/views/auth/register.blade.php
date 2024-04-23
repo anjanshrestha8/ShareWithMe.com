@@ -9,7 +9,7 @@
 
                 <div class="form-group mt-3">
                     <label for="name" class="text-body">Name:</label><br>
-                    <input type="name" name="name" id="name" class="form-control">
+                    <input type="text" name="name" id="name" class="form-control">
                     @error('name')
                         <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror

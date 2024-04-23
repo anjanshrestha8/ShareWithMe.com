@@ -9,21 +9,24 @@ class IdeaController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'content' => 'required|min:5|max:250'
         ]);
 
-        $idea = new Idea();
-        $idea->content = $request->get("content");
-        $idea->save();
+        $validated['user_id'] = auth()->user()->id;
+        Idea::create($validated);
 
         return redirect()->route("dashboard")->with("success", "Idea was created successfully!!");
     }
 
-    public function destroy($id)
+    public function destroy(Idea $id)
+
     {
-        $idea = Idea::where('id', $id)->firstOrFail();
-        $idea->delete();
+
+        if (auth()->user()->id !== $id->user_id) {
+            abort(404);
+        }
+        $id->delete();
 
         return redirect()->route("dashboard")->with("success", "Idea was deleted successfully!!");
     }
@@ -38,6 +41,10 @@ class IdeaController extends Controller
 
     public function edit(Idea $id)
     {
+
+        if (auth()->user()->id !== $id->user_id) {
+            abort(404);
+        }
         $editing = true;
         return view('idea.show', [
             'idea' => $id,
@@ -45,18 +52,19 @@ class IdeaController extends Controller
         ]);
     }
 
-    public function update($id, Request $request)
+    public function update(Idea $id, Request $request)
     {
-
-        $request->validate([
+        if (auth()->user()->id !== $id->user_id) {
+            abort(404);
+        }
+        $validated = $request->validate([
             'content' => 'required|min:5|max:250'
         ]);
 
-        $idea = Idea::find($id);
-        $idea->content = $request->content;
-        $idea->update();
 
 
-        return redirect()->route('idea.show', $idea->id)->with('success', "Idea was updated successfully!!!!!");
+        $id->update($validated);
+
+        return redirect()->route('idea.show', $id->id)->with('success', "Idea was updated successfully!!!!!");
     }
 }
