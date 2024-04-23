@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -51,7 +52,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Profile
 
-// Route::
+Route::get('users/{id}', [UserController::class, 'show'])->name('user.show')->middleware('auth');
 
 
 Route::get('/terms', function () {
