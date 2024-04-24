@@ -9,9 +9,22 @@
             @include('shared.success-message')
             <div class="mt-3">
                 @include('shared.user-card')
-                <hr>
             </div>
+            <hr>
+            @if (count($ideas) > 0)
+                @foreach ($ideas as $idea)
+                    {{-- Data retrive garxa data base bata   --}}
+                    <div class="mt-3">
+                        @include('shared.idea-card')
+                    </div>
+                @endforeach
+            @else
+                <p class="text-danger text-center mt-4 f">No result found...</p>
+            @endif
 
+            <div class="mt-4">
+                {{ $ideas->withQueryString()->links() }}
+            </div>
 
 
         </div>

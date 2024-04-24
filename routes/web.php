@@ -51,8 +51,14 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // Profile
+Route::get('users/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+Route::put('users/{id}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 
-Route::get('users/{id}', [UserController::class, 'show'])->name('user.show')->middleware('auth');
+Route::get('profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+
+
+
 
 
 Route::get('/terms', function () {

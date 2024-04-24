@@ -11,17 +11,18 @@
             <ul class="navbar-nav">
                 @guest()
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/login"><button
+                        <a class="nav-link active" aria-current="page" href={{ route('login') }}><button
                                 class="btn btn-info">Login</button></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register"><button class="btn btn-outline-info">Register</button></a>
+                        <a class="nav-link" href={{ route('register') }}><button
+                                class="btn btn-outline-info">Register</button></a>
                     </li>
                 @endguest
 
                 @auth()
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile"><button
+                        <a class="nav-link" href={{ route('profile') }}><button
                                 class="btn btn-primary">{{ Auth::user()->name }}</button></a>
                     </li>
                     <li class="nav-item mt-2">
