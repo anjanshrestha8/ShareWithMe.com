@@ -40,7 +40,7 @@ class AuthController extends Controller
 
         // Mail::to($user->email)->send(new WelcomeEmail($user));
 
-        Mail::to('anjanshrestha2023@gmail.com')->send(new WelcomeEmail($user));
+        Mail::to($user->email)->send(new WelcomeEmail($user));
 
 
 
