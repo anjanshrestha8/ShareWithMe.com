@@ -7,12 +7,7 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="{{ Route::is('feed') ? 'text-success bg-rounded-success' : 'text-white' }} nav-link"
-                    href="{{ url('feed') }}">
-                    <span>Feed</span>
-                </a>
-            </li>
+
             <li class="nav-item">
                 <a class="{{ Route::is('terms') ? 'text-success bg-rounded-success' : 'text-white' }} nav-link"
                     href="{{ url('terms') }}">

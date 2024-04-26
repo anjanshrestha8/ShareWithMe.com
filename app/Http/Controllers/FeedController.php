@@ -13,20 +13,20 @@ class FeedController extends Controller
     public function __invoke(Request $request)
     {
 
-        // $user = auth()->user();
-        // $followingIds =$user->followings()
-        // $idea = Idea::withOut('user')->orderBy('created_at', 'DESC');
+        //     $user = auth()->user();
+        //     $followingIds =$user->followings()
+        //     $idea = Idea::withOut('user')->orderBy('created_at', 'DESC');
 
-        // if (request()->has('search')) {
+        //     if (request()->has('search')) {
 
-        //     $idea = $idea->where('content', 'like', '%' . request()->get('search') . '%');
-        // }
+        //         $idea = $idea->where('content', 'like', '%' . request()->get('search') . '%');
+        //     }
 
-        // return view(
-        //     "dashboard",
-        //     [
-        //         'ideas' => $idea->paginate(5),
-        //     ]
-        // );
+        //     return view(
+        //         "dashboard",
+        //         [
+        //             'ideas' => $idea->paginate(5),
+        //         ]
+        //     );
     }
 }
