@@ -15,7 +15,7 @@
                 @foreach ($ideas as $idea)
                     {{-- Data retrive garxa data base bata   --}}
                     <div class="mt-3">
-                        @include('shared.idea-card')
+                        @include('idea.shared.idea-card')
                     </div>
                 @endforeach
             @else

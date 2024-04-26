@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -49,14 +50,14 @@ class UserController extends Controller
             ]
         );
 
-        dump($validate);
+
 
         if ($request->has('image')) {
             $imagePath = $request->file('image')->store('profile', 'public');
             $validate['image'] = $imagePath;
         }
 
-        dump($validate['image']);
+        Storage::disk('public')->delete($id->image ?? '');
 
 
 

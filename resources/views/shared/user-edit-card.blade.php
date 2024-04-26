@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
                     <img style="width:150px" class="me-3 avatar-sm rounded-circle" {{ $user->getImageURL() }}"
-                        alt="$user->name ">
+                        alt="{{ $user->name }} ">
                     <div>
                         <input type="text" class="form-control" value="{{ $user->name }}" name="name">
                         @error('name')
@@ -57,13 +57,7 @@
                     <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-comment me-1">
                         </span> {{ $user->comments()->count() }} </a>
                 </div>
-                @auth()
-                    @if (Auth::id() !== $user->id)
-                        <div class="mt-3">
-                            <button class="btn btn-primary btn-sm"> Follow </button>
-                        </div>
-                    @endif
-                @endauth
+
             </div>
         </form>
     </div>

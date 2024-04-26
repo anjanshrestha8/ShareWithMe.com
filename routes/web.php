@@ -3,7 +3,10 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FeedController;
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,8 +62,23 @@ Route::get('profile', [UserController::class, 'profile'])->name('profile')->midd
 
 
 
+// follow
+
+Route::post('users/{user}/follow', [FollowerController::class, 'follow'])->name('user.follow')->middleware('auth');
+Route::post('users/{user}/unfollow', [FollowerController::class, 'unfollow'])->name('user.unfollow')->middleware('auth');
+
+
+// likes
+
+Route::post('ideas/{idea}/like', [IdeaLikeController::class, 'like'])->name('ideas.like')->middleware('auth');
+Route::post('ideas/{idea}/unlike', [IdeaLikeController::class, 'unlike'])->name('ideas.unlike')->middleware('auth');
+
+// feed
+
+Route::get('/feed', FeedController::class)->name('feed')->middleware('auth');
+
 
 
 Route::get('/terms', function () {
     return view('terms');
-});
+})->name('terms');

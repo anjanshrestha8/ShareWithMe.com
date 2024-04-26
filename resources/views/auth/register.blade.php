@@ -17,7 +17,7 @@
                 <div class="form-group mt-3">
                     <label for="email" class="text-body">Email:</label><br>
                     <input type="email" name="email" id="email" class="form-control">
-                    @error('emails')
+                    @error('email')
                         <span class=" d-block fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
                 </div>

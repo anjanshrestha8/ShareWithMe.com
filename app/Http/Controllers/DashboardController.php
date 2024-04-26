@@ -11,7 +11,7 @@ class DashboardController extends Controller
 
     {
 
-        $idea = Idea::orderBy('created_at', 'DESC');
+        $idea = Idea::withOut('user')->orderBy('created_at', 'DESC');
 
         if (request()->has('search')) {
 

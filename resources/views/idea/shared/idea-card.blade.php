@@ -11,15 +11,19 @@
                 </div>
             </div>
             <div>
-                <form method="post" action={{ route('idea.destroy', $idea->id) }}>
-                    @csrf()
-                    @method('delete')
-                    <a href="{{ route('idea.edit', $idea->id) }}" class="btn btn-outline-info btn-sm">Edit</a>
-
+                @if (Auth::user() === $idea->user_id)
                     <a href="{{ route('idea.show', $idea->id) }}" class="btn btn-outline-success btn-sm">View</a>
+                @else
+                    <form method="post" action={{ route('idea.destroy', $idea->id) }}>
+                        @csrf()
+                        @method('delete')
+                        <a href="{{ route('idea.edit', $idea->id) }}" class="btn btn-outline-info btn-sm">Edit</a>
 
-                    <button class=" btn btn-outline-danger btn-sm"> x </button>
-                </form>
+                        <a href="{{ route('idea.show', $idea->id) }}" class="btn btn-outline-success btn-sm">View</a>
+
+                        <button class=" btn btn-outline-danger btn-sm"> x </button>
+                    </form>
+                @endif
 
             </div>
         </div>
@@ -47,10 +51,7 @@
             </p>
         @endif
         <div class="d-flex justify-content-between">
-            <div>
-                <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> {{ $idea->likes }} </a>
-            </div>
+            @include('idea.shared.like-button')
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
                     {{ $idea->created_at }} </span>

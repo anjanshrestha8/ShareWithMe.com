@@ -8,13 +8,13 @@
         </div>
         <div class="col-6">
             @include('shared.success-message')
-            @include('shared.submit-idea') {{-- Ideas share Form  --}}
+            @include('idea.shared.submit-idea') {{-- Ideas share Form  --}}
             <hr>
             @if (count($ideas) > 0)
                 @foreach ($ideas as $idea)
                     {{-- Data retrive garxa data base bata   --}}
                     <div class="mt-3">
-                        @include('shared.idea-card')
+                        @include('idea.shared.idea-card')
                     </div>
                 @endforeach
             @else

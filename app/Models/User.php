@@ -45,6 +45,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
+    // reationships
+
     public function ideas()
     {
         return $this->hasMany(Idea::class)->orderBy('created_at', 'desc');
@@ -53,11 +56,38 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
     }
+
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'follower_id', 'user_id')->withTimestamps();
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimestamps();
+    }
+
+
+    public function follows(User $user)
+    {
+        return $this->followings()->where('user_id', $user->id)->exists();
+    }
+
+
+
+
+
+
     public function getImageURL()
     {
         if ($this->image) {
             return url('storage/' . $this->image);
         }
         return "https://api.dicebear.com/6.x/fun-emoji/svg?seed={$this->name}";
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Idea::class, 'idea_like')->withTimestamps();
     }
 }
